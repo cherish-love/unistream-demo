@@ -1,0 +1,188 @@
+{
+  "speech": [
+    {
+      "id": "sample_001",
+      "domain": "speech",
+      "source_file": "121-127105-0029.flac",
+      "duration_s": 7.31,
+      "conditions": {
+        "reference": "reference.wav",
+        "low_anchor": "low_anchor.wav",
+        "opus_12kbps": "opus_12kbps.wav",
+        "encodec_12kbps": "encodec_12kbps.wav",
+        "snac": "snac.wav",
+        "unistream_top2": "unistream_top2_22kbps.wav",
+        "unistream_top1": "unistream_top1_12kbps.wav"
+      }
+    },
+    {
+      "id": "sample_002",
+      "domain": "speech",
+      "source_file": "1089-134686-0028.flac",
+      "duration_s": 7.83,
+      "conditions": {
+        "reference": "reference.wav",
+        "low_anchor": "low_anchor.wav",
+        "opus_12kbps": "opus_12kbps.wav",
+        "encodec_12kbps": "encodec_12kbps.wav",
+        "snac": "snac.wav",
+        "unistream_top2": "unistream_top2_22kbps.wav",
+        "unistream_top1": "unistream_top1_12kbps.wav"
+      }
+    },
+    {
+      "id": "sample_003",
+      "domain": "speech",
+      "source_file": "1089-134686-0006.flac",
+      "duration_s": 8.0,
+      "conditions": {
+        "reference": "reference.wav",
+        "low_anchor": "low_anchor.wav",
+        "opus_12kbps": "opus_12kbps.wav",
+        "encodec_12kbps": "encodec_12kbps.wav",
+        "snac": "snac.wav",
+        "unistream_top2": "unistream_top2_22kbps.wav",
+        "unistream_top1": "unistream_top1_12kbps.wav"
+      }
+    },
+    {
+      "id": "sample_004",
+      "domain": "speech",
+      "source_file": "1221-135767-0002.flac",
+      "duration_s": 8.0,
+      "conditions": {
+        "reference": "reference.wav",
+        "low_anchor": "low_anchor.wav",
+        "opus_12kbps": "opus_12kbps.wav",
+        "encodec_12kbps": "encodec_12kbps.wav",
+        "snac": "snac.wav",
+        "unistream_top2": "unistream_top2_22kbps.wav",
+        "unistream_top1": "unistream_top1_12kbps.wav"
+      }
+    }
+  ],
+  "music": [
+    {
+      "id": "sample_001",
+      "domain": "music",
+      "source_file": "1100234.wav",
+      "duration_s": 8.0,
+      "conditions": {
+        "reference": "reference.wav",
+        "low_anchor": "low_anchor.wav",
+        "opus_12kbps": "opus_12kbps.wav",
+        "encodec_12kbps": "encodec_12kbps.wav",
+        "snac": "snac.wav",
+        "unistream_top2": "unistream_top2_22kbps.wav",
+        "unistream_top1": "unistream_top1_12kbps.wav"
+      }
+    },
+    {
+      "id": "sample_002",
+      "domain": "music",
+      "source_file": "1100011.wav",
+      "duration_s": 8.0,
+      "conditions": {
+        "reference": "reference.wav",
+        "low_anchor": "low_anchor.wav",
+        "opus_12kbps": "opus_12kbps.wav",
+        "encodec_12kbps": "encodec_12kbps.wav",
+        "snac": "snac.wav",
+        "unistream_top2": "unistream_top2_22kbps.wav",
+        "unistream_top1": "unistream_top1_12kbps.wav"
+      }
+    },
+    {
+      "id": "sample_003",
+      "domain": "music",
+      "source_file": "1024125.wav",
+      "duration_s": 8.0,
+      "conditions": {
+        "reference": "reference.wav",
+        "low_anchor": "low_anchor.wav",
+        "opus_12kbps": "opus_12kbps.wav",
+        "encodec_12kbps": "encodec_12kbps.wav",
+        "snac": "snac.wav",
+        "unistream_top2": "unistream_top2_22kbps.wav",
+        "unistream_top1": "unistream_top1_12kbps.wav"
+      }
+    },
+    {
+      "id": "sample_004",
+      "domain": "music",
+      "source_file": "1100284.wav",
+      "duration_s": 8.0,
+      "conditions": {
+        "reference": "reference.wav",
+        "low_anchor": "low_anchor.wav",
+        "opus_12kbps": "opus_12kbps.wav",
+        "encodec_12kbps": "encodec_12kbps.wav",
+        "snac": "snac.wav",
+        "unistream_top2": "unistream_top2_22kbps.wav",
+        "unistream_top1": "unistream_top1_12kbps.wav"
+      }
+    },
+    {
+      "id": "sample_005",
+      "domain": "music",
+      "source_file": "1100106.wav",
+      "duration_s": 8.0,
+      "conditions": {
+        "reference": "reference.wav",
+        "low_anchor": "low_anchor.wav",
+        "opus_12kbps": "opus_12kbps.wav",
+        "encodec_12kbps": "encodec_12kbps.wav",
+        "snac": "snac.wav",
+        "unistream_top2": "unistream_top2_22kbps.wav",
+        "unistream_top1": "unistream_top1_12kbps.wav"
+      }
+    }
+  ],
+  "environmental": [
+    {
+      "id": "sample_001",
+      "domain": "environmental",
+      "source_file": "106245.wav",
+      "duration_s": 8.0,
+      "conditions": {
+        "reference": "reference.wav",
+        "low_anchor": "low_anchor.wav",
+        "opus_12kbps": "opus_12kbps.wav",
+        "encodec_12kbps": "encodec_12kbps.wav",
+        "snac": "snac.wav",
+        "unistream_top2": "unistream_top2_22kbps.wav",
+        "unistream_top1": "unistream_top1_12kbps.wav"
+      }
+    },
+    {
+      "id": "sample_002",
+      "domain": "environmental",
+      "source_file": "1014.wav",
+      "duration_s": 8.0,
+      "conditions": {
+        "reference": "reference.wav",
+        "low_anchor": "low_anchor.wav",
+        "opus_12kbps": "opus_12kbps.wav",
+        "encodec_12kbps": "encodec_12kbps.wav",
+        "snac": "snac.wav",
+        "unistream_top2": "unistream_top2_22kbps.wav",
+        "unistream_top1": "unistream_top1_12kbps.wav"
+      }
+    },
+    {
+      "id": "sample_003",
+      "domain": "environmental",
+      "source_file": "100355.wav",
+      "duration_s": 8.0,
+      "conditions": {
+        "reference": "reference.wav",
+        "low_anchor": "low_anchor.wav",
+        "opus_12kbps": "opus_12kbps.wav",
+        "encodec_12kbps": "encodec_12kbps.wav",
+        "snac": "snac.wav",
+        "unistream_top2": "unistream_top2_22kbps.wav",
+        "unistream_top1": "unistream_top1_12kbps.wav"
+      }
+    }
+  ]
+}

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="UniStream: A 48kHz Universal Streaming Audio Codec with Flow-Regularized Multi-Expert Quantization">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniStream: A 48kHz Universal Streaming Audio Codec</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  
+  <style>
+    body { font-family: 'Noto Sans', sans-serif; }
+    .title-font { font-family: 'Google Sans', sans-serif; font-weight: 700; }
+    .section { padding: 2rem 1.5rem; }
+    .section-title { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 1.6rem; margin-bottom: 1rem; border-bottom: 2px solid #3273dc; padding-bottom: 0.5rem; }
+    .framework-img { max-width: 100%; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    
+    .audio-table { width: 100%; border-collapse: collapse; margin: 15px auto; table-layout: fixed; }
+    .audio-table th { background: #363636; color: white; padding: 10px; text-align: center; font-size: 0.9rem; }
+    .audio-table td { padding: 10px; border-bottom: 1px solid #ddd; text-align: center; vertical-align: middle; }
+    .audio-table audio { width: 100%; max-width: 160px; height: 36px; }
+    .audio-table .ours { background: #effaf5; }
+    .domain-label { font-family: 'Google Sans', sans-serif; font-weight: 700; font-size: 1.1rem; margin: 1.5rem 0 0.5rem; color: #363636; }
+    
+    footer { background: #363636; color: #f5f5f5; padding: 20px; text-align: center; margin-top: 30px; }
+  </style>
+</head>
+<body>
+
+<!-- Title -->
+<section class="hero" style="padding: 2rem 0 1rem;">
+  <div class="container is-max-desktop has-text-centered">
+    <h1 class="title is-3 title-font">UniStream: A 48kHz Universal Streaming Audio Codec with Flow-Regularized Multi-Expert Quantization</h1>
+    <p class="subtitle is-5">Anonymous Authors · Interspeech 2026 Submission</p>
+  </div>
+</section>
+
+<!-- Abstract -->
+<section class="section" style="padding-top: 1rem;">
+  <div class="container is-max-desktop">
+    <h2 class="section-title">Abstract</h2>
+    <p class="has-text-justified">
+      We present <b>UniStream</b>, a fully causal 48 kHz universal audio codec supporting speech, music, and environmental sound within a single model. UniStream introduces <b>Multi-Expert Residual Vector Quantization (ME-RVQ)</b>, which routes each frame to two of four specialized codebooks, improving PESQ by 0.21 over a single-codebook baseline with only 7.3% parameter overhead. To further regularize the quantized latent space, we employ <b>Optimal Transport Conditional Flow Matching (OT-CFM)</b> exclusively during training as a zero-inference-cost regularizer. At 12 kbps, UniStream reduces speech Mel-Distortion by 37% relative to EnCodec; at 22.5 kbps it achieves the lowest causal Mel-D on speech and environmental audio among all evaluated systems.
+    </p>
+  </div>
+</section>
+
+<!-- Framework -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <h2 class="section-title">System Architecture</h2>
+    <div class="has-text-centered">
+      <img src="images/framework1.png" alt="UniStream Architecture" class="framework-img"
+           onerror="this.style.opacity='0.3'; this.alt='[Place architecture figure at images/unistream_overview.png]'">
+      <p class="is-size-7 has-text-grey" style="margin-top: 8px;">Figure 1: Overview of UniStream. Encoder → ME-RVQ (OT-CFM training regularizer) → Decoder.</p>
+    </div>
+    <div class="has-text-centered" style="margin-top: 1.5rem;">
+      <img src="images/mervq_detail.png" alt="ME-RVQ Detail" class="framework-img"
+           onerror="this.style.display='none'">
+      <p class="is-size-7 has-text-grey" style="margin-top: 8px;" id="fig2-cap">Figure 2: ME-RVQ structure and routing mechanism.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Audio Demos -->
+<section class="section" style="padding-top: 0;">
+  <div class="container is-max-desktop">
+    <h2 class="section-title">Audio Demos</h2>
+    <p style="margin-bottom: 20px;">
+      Audio samples comparing UniStream against baselines across three domains.
+      <b>UniStream Top-2</b> operates at 22.5 kbps; <b>UniStream Top-1</b> and all baselines at 12 kbps.
+      Low Anchor is a 3.5 kHz low-pass filtered reference.
+    </p>
+
+    <!-- SPEECH -->
+    <p class="domain-label">🎙 Speech</p>
+    <table class="audio-table" id="speech-table">
+      <thead>
+        <tr>
+          <th>Sample</th>
+          <th>Reference</th>
+          <th>Low Anchor</th>
+          <th>Opus 12kbps</th>
+          <th>EnCodec 12kbps</th>
+          <th>SNAC</th>
+          <th>UniStream Top-1 (12kbps)</th>
+          <th style="background:#2d6a4f;">UniStream Top-2 (22.5kbps)</th>
+        </tr>
+      </thead>
+      <tbody id="speech-body"></tbody>
+    </table>
+
+    <!-- MUSIC -->
+    <p class="domain-label">🎵 Music</p>
+    <table class="audio-table" id="music-table">
+      <thead>
+        <tr>
+          <th>Sample</th>
+          <th>Reference</th>
+          <th>Low Anchor</th>
+          <th>Opus 12kbps</th>
+          <th>EnCodec 12kbps</th>
+          <th>SNAC</th>
+          <th>UniStream Top-1 (12kbps)</th>
+          <th style="background:#2d6a4f;">UniStream Top-2 (22.5kbps)</th>
+        </tr>
+      </thead>
+      <tbody id="music-body"></tbody>
+    </table>
+
+    <!-- ENVIRONMENTAL -->
+    <p class="domain-label">🌿 Environmental</p>
+    <table class="audio-table" id="env-table">
+      <thead>
+        <tr>
+          <th>Sample</th>
+          <th>Reference</th>
+          <th>Low Anchor</th>
+          <th>Opus 12kbps</th>
+          <th>EnCodec 12kbps</th>
+          <th>SNAC</th>
+          <th>UniStream Top-1 (12kbps)</th>
+          <th style="background:#2d6a4f;">UniStream Top-2 (22.5kbps)</th>
+        </tr>
+      </thead>
+      <tbody id="env-body"></tbody>
+    </table>
+
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Anonymous Interspeech Submission</p>
+</footer>
+
+<script>
+  const CONDITIONS = [
+    'reference',
+    'low_anchor',
+    'opus_12kbps',
+    'encodec_12kbps',
+    'snac',
+    'unistream_top1_12kbps',
+    'unistream_top2_22kbps',
+  ];
+  const OURS = new Set(['unistream_top1_12kbps', 'unistream_top2_22kbps']);
+
+  function buildRows(samples, tbodyId) {
+    const tbody = document.getElementById(tbodyId);
+    if (!tbody) return;
+    tbody.innerHTML = '';
+    samples.forEach((s, i) => {
+      const tr = document.createElement('tr');
+      let html = `<td>${String(i + 1).padStart(2, '0')}</td>`;
+      CONDITIONS.forEach(cond => {
+        const path = s.conditions?.[cond];
+        const cls = OURS.has(cond) ? ' class="ours"' : '';
+        html += `<td${cls}>${path
+          ? `<audio controls src="${path}" preload="none"></audio>`
+          : '—'}</td>`;
+      });
+      tr.innerHTML = html;
+      tbody.appendChild(tr);
+    });
+  }
+
+  fetch('manifest.json')
+    .then(r => r.json())
+    .then(m => {
+      buildRows(m.speech        || [], 'speech-body');
+      buildRows(m.music         || [], 'music-body');
+      buildRows(m.environmental || [], 'env-body');
+    })
+    .catch(() => {
+      // Fallback: infer paths from generate_mushra_samples.py naming convention
+      const cfg = {
+        speech:        { id: 'speech-body', n: 4 },
+        music:         { id: 'music-body',  n: 5 },
+        environmental: { id: 'env-body',    n: 3 },
+      };
+      Object.entries(cfg).forEach(([domain, { id, n }]) => {
+        const samples = Array.from({ length: n }, (_, i) => {
+          const pad = String(i + 1).padStart(3, '0');
+          const base = `mushra_audio/${domain}/sample_${pad}/`;
+          return {
+            conditions: {
+              reference:             base + 'reference.wav',
+              low_anchor:            base + 'low_anchor.wav',
+              opus_12kbps:           base + 'opus_12kbps.wav',
+              encodec_12kbps:        base + 'encodec_12kbps.wav',
+              snac:                  base + 'snac.wav',
+              unistream_top1_12kbps: base + 'unistream_top1_12kbps.wav',
+              unistream_top2_22kbps: base + 'unistream_top2_22kbps.wav',
+            }
+          };
+        });
+        buildRows(samples, id);
+      });
+    });
+</script>
+
+</body>
+</html>
